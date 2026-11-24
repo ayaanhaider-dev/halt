@@ -47,7 +47,7 @@ struct GeneralView: View {
                 }
                 if ready || engine.error != nil { ControlStatus() }
             }
-            TitledCard("Updates") { UpdateRow() }
+            TitledCard("Updates") { UpdateRows() }
             TitledCard("About") {
                 HStack(spacing: 14) {
                     AppLogo(size: 64)

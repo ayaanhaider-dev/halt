@@ -9,10 +9,14 @@
   <key>NSHumanReadableCopyright</key><string>Halt by Lveno</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleShortVersionString</key><string>0.1.0</string>
-  <key>CFBundleVersion</key><string>1</string>
+  <key>CFBundleVersion</key><string>0.1.0</string>
   <key>LSMinimumSystemVersion</key><string>27.0</string>
   <key>SMPrivilegedExecutables</key><dict>
     <key>com.lveno.halt.helper</key><string>anchor apple generic and identifier "com.lveno.halt.helper" and certificate leaf[subject.OU] = "TEAMID"</string>
   </dict>
+  <key>SUFeedURL</key><string>https://github.com/ayaanhaider-dev/halt/releases/latest/download/appcast.xml</string>
+  <key>SUPublicEDKey</key><string>WhIm7ETpoiSLrfpfSfTr2saB3EStH5YbGf2vmN0f6aw=</string>
+  <key>SUEnableAutomaticChecks</key><true/>
+  <key>SUVerifyUpdateBeforeExtraction</key><true/>
   <key>LSUIElement</key><true/>
 </dict></plist>

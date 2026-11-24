@@ -23,7 +23,7 @@ An Apple silicon MacBook with macOS 27. So far Halt has only been tested on a Ma
 3. Go to System Settings → Privacy & Security and click **Open Anyway**.
 4. Follow the setup. Halt asks for your password once, to install the helper that controls charging.
 
-Halt checks GitHub once a day for a new version. You can turn that off in General. It sends nothing else.
+Halt checks GitHub once a day for a new version and offers to install it. You can turn that off in General. It sends nothing else.
 
 ## Good to know
 
@@ -53,4 +53,4 @@ The app is in `Sources`, grouped by feature. `Helper` is the root service: it ac
 
 ## License
 
-GPL-2.0. The Halt and Lveno names and logos are not covered by it.
+GPL-2.0. Updates use [Sparkle](https://sparkle-project.org), under its MIT-style license. The Halt and Lveno names and logos are not covered by it.

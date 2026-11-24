@@ -13,7 +13,7 @@ APP="$OUT/build/Halt.app"
 SWIFT=(swiftc -target arm64-apple-macos27.0 -swift-version 5 -O)
 mkdir -p "$OUT"
 if [ "${1:-}" = test ]; then
-  "${SWIFT[@]}" Sources/Settings/*.swift Sources/Battery/{Estimates,PowerFlow,AppEnergyUse}.swift Sources/App/Command.swift Sources/Updates/Release.swift Tests/*.swift -o "$OUT/tests"
+  "${SWIFT[@]}" Sources/Settings/*.swift Sources/Battery/{Estimates,PowerFlow,AppEnergyUse}.swift Sources/App/Command.swift Tests/*.swift -o "$OUT/tests"
   exec "$OUT/tests"
 fi
 # Releases outlive the certificate only with a trusted timestamp.
@@ -22,6 +22,15 @@ TIMESTAMP=--timestamp=none
 # The helper refuses unsigned callers, so a real certificate is required.
 SIGN=$(security find-identity -v -p codesigning | awk '/Apple Development/{print $2; exit}')
 [ -n "$SIGN" ] || { echo "No Apple Development certificate found"; exit 1; }
+# Sparkle installs updates. Its exact version is pinned by checksum.
+SPARKLE="$OUT/sparkle-2.10.1"
+if [ ! -d "$SPARKLE/Sparkle.framework" ]; then
+  DOWNLOAD=$(mktemp -d)
+  curl -fsSL -o "$DOWNLOAD/sparkle.tar.xz" https://github.com/sparkle-project/Sparkle/releases/download/2.10.1/Sparkle-2.10.1.tar.xz
+  echo "1a856d2a9edb8e628de88121d7be04cf0e2167f8641650b78fca00b14244cf27  $DOWNLOAD/sparkle.tar.xz" | shasum -a 256 -c -
+  mkdir -p "$SPARKLE" && tar -xJf "$DOWNLOAD/sparkle.tar.xz" -C "$SPARKLE"
+  rm -rf "$DOWNLOAD"
+fi
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Library/LaunchServices"
 # Shortcuts finds Halt's actions through metadata that Xcode normally extracts.
@@ -29,6 +38,7 @@ META="$OUT/intents"
 rm -rf "$META" && mkdir -p "$META"
 echo '["AppIntent","EntityQuery","AppEntity","TransientEntity","AppEnum","AppShortcutProviding","AppShortcutsProvider","AnyResolverProviding","AppIntentsPackage","DynamicOptionsProvider"]' > "$META/protocols.json"
 "${SWIFT[@]}" -wmo -module-name Halt -emit-const-values-path "$META/Halt.swiftconstvalues" -Xfrontend -const-gather-protocols-file -Xfrontend "$META/protocols.json" \
+  -F "$SPARKLE" -framework Sparkle -Xlinker -rpath -Xlinker @executable_path/../Frameworks \
   Sources/**/*.swift -o "$APP/Contents/MacOS/Halt"
 print -l $PWD/Sources/**/*.swift > "$META/sources"
 echo "$META/Halt.swiftconstvalues" > "$META/constvalues"
@@ -45,10 +55,17 @@ HELPER="$APP/Contents/Library/LaunchServices/com.lveno.halt.helper"
   -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __info_plist -Xlinker "$META/Helper-Info.plist" \
   -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __launchd_plist -Xlinker Helper/Launchd.plist
 cp "$META/Info.plist" "$APP/Contents/"
-cp Assets/haltTemplate*.png Assets/*.svg "$APP/Contents/Resources/"
+cp Assets/Sparkle-LICENSE.txt Assets/haltTemplate*.png Assets/*.svg "$APP/Contents/Resources/"
 # The tool only takes a full path.
 xcrun actool "$PWD/Assets/Halt.icon" --compile "$APP/Contents/Resources" --app-icon Halt --platform macosx --minimum-deployment-target 27.0 \
   --output-partial-info-plist "$META/icon.plist" > "$META/icon.log" 2>&1 || { cat "$META/icon.log"; exit 1; }
+mkdir -p "$APP/Contents/Frameworks"
+ditto "$SPARKLE/Sparkle.framework" "$APP/Contents/Frameworks/Sparkle.framework"
+# The services are only for sandboxed apps.
+rm -rf "$APP/Contents/Frameworks/Sparkle.framework/XPCServices" "$APP/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices"
+for part in Versions/B/Autoupdate Versions/B/Updater.app ""; do
+  codesign --force $TIMESTAMP --options runtime --sign "$SIGN" "$APP/Contents/Frameworks/Sparkle.framework/$part"
+done
 codesign --force $TIMESTAMP --options runtime --identifier com.lveno.halt.helper --sign "$SIGN" "$HELPER"
 codesign --force $TIMESTAMP --options runtime --sign "$SIGN" "$APP"
 codesign --verify --strict "$APP"

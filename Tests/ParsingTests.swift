@@ -18,8 +18,3 @@ func testOlderSettingsStillLoad() {
     let loaded = try! JSONDecoder().decode(Settings.self, from: Data(old.utf8))
     precondition(loaded.limit == 83 && loaded.barItems == [.battery, .power] && loaded.tasks[0].once == nil)
 }
-
-func testVersions() {
-    precondition(
-        isNewer("0.10.0", than: "0.9.1") && !isNewer("1.0", than: "1.0") && !isNewer("0.9", than: "1.0"))
-}

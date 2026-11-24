@@ -43,7 +43,6 @@ struct Settings: Codable, Equatable {
     var ledNoLimit: Bool?
     var ledNoBlink: Bool?
     var runs: [TaskRun]?
-    var skipUpdateCheck: Bool?
 
     var barItems: [MenuBarItem] {
         get {

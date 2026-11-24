@@ -15,14 +15,7 @@ extension MainView {
         case .schedule:
             engine.settings.tasks.contains(where: \.enabled)
                 ? "\(engine.settings.tasks.count(where: \.enabled))" : ""
-        case .general:
-            if engine.helperStatus != .enabled || engine.conflict {
-                "!"
-            } else if case .available = UpdateChecker.shared.state {
-                "Update"
-            } else {
-                ""
-            }
+        case .general: engine.helperStatus == .enabled && !engine.conflict ? "" : "!"
         case .dashboard, .appearance: ""
         }
     }
