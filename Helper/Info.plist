@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleIdentifier</key><string>com.lveno.halt.helper</string>
+  <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+  <key>CFBundleName</key><string>Halt Helper</string>
+  <!-- Raise this whenever the helper changes: Halt then offers to update the installed copy. -->
+  <key>CFBundleVersion</key><string>1</string>
+  <key>SMAuthorizedClients</key><array>
+    <string>anchor apple generic and identifier "com.lveno.halt" and certificate leaf[subject.OU] = "TEAMID"</string>
+  </array>
+</dict></plist>
