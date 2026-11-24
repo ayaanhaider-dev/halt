@@ -20,7 +20,9 @@ hdiutil verify -quiet "$DMG"
 # The list of versions, signed with the private key in this Mac's Keychain.
 APPCAST=$(mktemp -d)
 cp "$DMG" "$APPCAST/"
-"$OUT/sparkle-2.10.1/bin/generate_appcast" --account halt --maximum-versions 1 \
+# Shown in the update window.
+cp RELEASE_NOTES.md "$APPCAST/Halt-$VERSION.md"
+"$OUT/sparkle-2.10.1/bin/generate_appcast" --account halt --embed-release-notes --maximum-versions 1 \
   --download-url-prefix "https://github.com/ayaanhaider-dev/halt/releases/download/v$VERSION/" -o "$OUT/appcast.xml" "$APPCAST"
 rm -rf "$APPCAST"
 grep -q edSignature "$OUT/appcast.xml" || { echo "The update list isn't signed"; exit 1; }
