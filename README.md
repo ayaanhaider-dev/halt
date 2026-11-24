@@ -2,7 +2,7 @@
 
 # Halt
 
-Stops your MacBook charging where you choose, and shows where its power goes. By [Lveno](https://lveno.agency/).
+**Beta.** Stops your MacBook charging where you choose, and shows where its power goes. By [Lveno](https://lveno.agency/).
 
 ## What it does
 

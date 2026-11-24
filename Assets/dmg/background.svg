@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+<rect width="640" height="420" fill="#F4F6F5"/>
+<g font-family="Helvetica Neue" text-anchor="middle">
+<text x="320" y="64" font-size="24" font-weight="700" fill="#0F1F1B">Drag Halt to Applications</text>
+<rect x="260" y="172" width="10" height="36" rx="5" fill="#128A70"/><rect x="278" y="172" width="10" height="36" rx="5" fill="#128A70"/><rect x="296" y="172" width="10" height="36" rx="5" fill="#128A70"/><rect x="314" y="172" width="10" height="36" rx="5" fill="#128A70"/><rect x="352" y="172" width="10" height="36" rx="5" fill="#C9D6D1"/><rect x="370" y="172" width="10" height="36" rx="5" fill="#C9D6D1"/><rect x="335" y="160" width="6" height="60" rx="2.5" fill="#0F1F1B"/>
+<text x="320" y="352" font-size="13" fill="#4A5A55">The first time, macOS will block Halt. Open System Settings, Privacy &amp; Security,</text>
+<text x="320" y="372" font-size="13" fill="#4A5A55">and click Open Anyway.</text>
+</g></svg>
