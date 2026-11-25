@@ -1,5 +1,5 @@
-The first beta of Halt.
+- Seven ready-made shortcuts in the Shortcuts app: set the charge limit, top up, discharge, return to the limit, calibrate, keep awake and battery level.
 
-Needs an Apple silicon MacBook with macOS 27. Only tested on a MacBook Air (M4) so far, so please report what doesn't work on yours.
+If Halt doesn't show up in Shortcuts, quit Shortcuts and open it again.
 
-macOS blocks the first launch because Halt isn't notarized: open System Settings, Privacy & Security, and click **Open Anyway**. Quit other charging apps first.
+Still a beta, for Apple silicon MacBooks with macOS 27. The first time you install Halt, macOS blocks it: open System Settings, Privacy & Security, and click **Open Anyway**.

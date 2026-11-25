@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0"><dict>
-  <key>CFBundleName</key><string>Halt</string>
-  <key>CFBundleIdentifier</key><string>com.lveno.halt</string>
-  <key>CFBundleExecutable</key><string>Halt</string>
-  <key>CFBundleIconName</key><string>Halt</string>
-  <key>CFBundleIconFile</key><string>Halt</string>
-  <key>NSHumanReadableCopyright</key><string>Halt by Lveno</string>
-  <key>CFBundlePackageType</key><string>APPL</string>
-  <key>CFBundleShortVersionString</key><string>0.1.0</string>
-  <key>CFBundleVersion</key><string>0.1.0</string>
-  <key>LSMinimumSystemVersion</key><string>27.0</string>
-  <key>SMPrivilegedExecutables</key><dict>
-    <key>com.lveno.halt.helper</key><string>anchor apple generic and identifier "com.lveno.halt.helper" and certificate leaf[subject.OU] = "TEAMID"</string>
-  </dict>
-  <key>SUFeedURL</key><string>https://github.com/ayaanhaider-dev/halt/releases/latest/download/appcast.xml</string>
-  <key>SUPublicEDKey</key><string>WhIm7ETpoiSLrfpfSfTr2saB3EStH5YbGf2vmN0f6aw=</string>
-  <key>SUEnableAutomaticChecks</key><true/>
-  <key>SUVerifyUpdateBeforeExtraction</key><true/>
-  <key>LSUIElement</key><true/>
-</dict></plist>
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Halt</string>
+	<key>CFBundleExecutable</key>
+	<string>Halt</string>
+	<key>CFBundleIconFile</key>
+	<string>Halt</string>
+	<key>CFBundleIconName</key>
+	<string>Halt</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.lveno.halt</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Halt</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.1</string>
+	<key>CFBundleVersion</key>
+	<string>0.1.1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>27.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Halt by Lveno</string>
+	<key>SMPrivilegedExecutables</key>
+	<dict>
+		<key>com.lveno.halt.helper</key>
+		<string>anchor apple generic and identifier "com.lveno.halt.helper" and certificate leaf[subject.OU] = "TEAMID"</string>
+	</dict>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://github.com/ayaanhaider-dev/halt/releases/latest/download/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>WhIm7ETpoiSLrfpfSfTr2saB3EStH5YbGf2vmN0f6aw=</string>
+	<key>SUVerifyUpdateBeforeExtraction</key>
+	<true/>
+</dict>
+</plist>
